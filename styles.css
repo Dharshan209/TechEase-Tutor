@@ -1,0 +1,424 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: peachpuff; /* Peach color background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+  margin-bottom: 20px; /* Add some spacing below the logo */
+}
+
+.logo img {
+  width: 300px;
+  height: auto;
+}
+
+
+.header {
+  text-align: center;
+  margin-bottom: 30px; /* Add space between the header and recent searches */
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #ff9966; /* Slightly darker peach color for the title */
+  margin: 10px 0; /* Adjust the margins to position the title */
+}
+
+.search-bar {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  max-width: 400px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px; /* Add spacing between input and button */
+}
+
+.search-bar button.search-button {
+  background-color: #ff9966;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+.recent-searches {
+  text-align: center;
+  position: relative;
+}
+
+.recent-searches h2 {
+  font-size: 1.5rem;
+  color: #ff9966;
+  margin-bottom: 10px;
+}
+
+/* ... Previous styles ... */
+
+/* Adding scrollbar to the search box */
+/* ... Previous styles ... */
+
+.search-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: 0 auto;
+  /* Add overflow-y and set a max-height for the scroll bar */
+  overflow-y: auto;
+  max-height: 300px; /* Adjust the height as needed */
+}
+
+/* ... Previous styles ... */
+
+/* ... Previous styles ... */
+
+
+.search-box ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.search-box li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: black;
+  position: relative;
+}
+
+/* ... Previous styles ... */
+
+/* ... Previous styles ... */
+
+/* Styling for the tick buttons */
+.tick-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tick-button {
+  background-color: #ff9966;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+/* Add margin to the tick buttons */
+.tick-button:not(:last-child) {
+  margin-right: 5px; /* Adjust spacing as needed */
+}
+
+/* ... Previous styles ... */
+
+
+/* Adding the Lokesh tab at the top center inside the line */
+
+
+/* Adding the line at the website left corner */
+/* ... Previous styles ... */
+
+/* Adding the line at the website left corner */
+
+
+/* ... Previous styles ... */
+
+
+/* ... Previous styles ... */
+
+/* Adjusting the width of the recent search box to a larger size */
+.recent-searches .search-box {
+  max-width: 600px; /* Set a larger maximum width for the search box */
+  max-height: 200px; /* Set a maximum height for the search box */
+  overflow-y: auto; /* Enable vertical scrollbar if content overflows */
+}
+
+/* ... Previous styles ... */
+/* ... Previous styles ... */
+/* ... Previous styles ... */
+
+/* Styling for the toggle button */
+.toggle-button {
+  background-color: #ff9966;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 10px;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+/* Styling for the sidebar */
+.sidebar {
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  left: -250px; /* Initial position off-screen */
+  width: 250px; /* Adjust the width */
+  height: 100vh;
+  overflow-y: auto;
+  transition: left 0.3s ease-in-out; /* Smooth transition */
+}
+
+.nav-content {
+  padding: 10px;
+}
+
+/* Styling for the navigation buttons */
+/* ... Previous styles ... */
+
+/* Styling for the navigation buttons */
+.nav-button {
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  margin-right: 10px; /* Add margin between buttons */
+}
+
+/* ... Previous styles ... */
+
+
+/* Styling for the line */
+.line {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: skyblue;
+  border-radius: 0 4px 4px 0;
+  z-index: -1;
+}
+
+/* ... Previous styles ... */
+
+/* Styling for the responsive sidebar menu */
+body.menu-open #sidebar {
+  left: 0; /* Show the sidebar */
+}
+
+body.menu-open #toggleButton {
+  left: 250px; /* Move the toggle button to the right */
+}
+/* ... Previous styles ... */
+
+/* Define styles for dark mode */
+body.dark {
+  background-color: #333;
+  color: white;
+}
+/* ... Previous styles ... */
+
+/* Style for the left corner buttons */
+.buttons-left {
+  position: fixed;
+  top: 75 px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.corner-button {
+  background-color: #ff9966;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-bottom: 70px;
+  cursor: pointer;
+}
+
+/* ... Previous styles ... */
+/* ... Previous styles ... */
+
+/* Style for the left corner box */
+.left-box {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the buttons in the left corner */
+.buttons-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.corner-button {
+  background-color: #ff9966;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/* ... Previous styles ... */
+/* ... Previous styles ... */
+
+.center-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px; /* Adjust the height as needed */
+  background-color: #f2f2f2;
+  margin-top: 20px;
+}
+
+.center-box iframe {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* ... Previous styles ... */
+/* ... Previous styles ... */
+
+
+.title {
+  font-size: 2.5rem;
+  color: #ff9966;
+  margin: 5px 0; /* Adjust the top margin to move the title closer to the header */
+  border-bottom: 1px solid #ccc; /* Add a 1px solid border at the bottom */
+  padding-bottom: 10px; /* Add some spacing between the title and the border */
+}
+.camera-feed {
+  position: absolute;
+  top: 100px; /* Adjust the vertical position as needed */
+  right: 20px; /* Adjust the horizontal position as needed */
+  width: 200px;
+  height: 150px;
+  border: 2px solid red; /* Add a border around the camera feed */
+  border-radius: 5px;
+  overflow: hidden;
+}
+/* ... Previous styles ... */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-container {
+  margin-top: 20px;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+.mute-button,
+.doubt-button {
+  background-color: #ff9966;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.button-box {
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.side-button {
+  background-color: #ff9966;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.side-button:last-child {
+  margin-bottom: 0;
+}
+.voice-text-box {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+.api-response-box {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+.webgazer-prediction-container {
+  position: absolute;
+  z-index: 9999;
+}
+
+.webgazer-prediction {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+

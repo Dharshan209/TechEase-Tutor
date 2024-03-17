@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Add the following CSS styles for the quiz questions */
+    .question-group {
+      display: flex;
+      flex-direction: column;
+      border: 2px solid #ccc;
+      background-color: #fff; /* White background */
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    .question {
+      margin-bottom: 10px;
+    }
+    /* Add margin to the header title */
+    .header h1.title {
+      margin-top: 20px;
+    }
+  </style>
+  <title>Quiz Page</title>
+</head>
+<body>
+  <button class="toggle-button" id="toggleButton">&#8942;</button>
+  <div class="sidebar" id="sidebar">
+    <div class="nav-content">
+      <button class="nav-button" id="homeButton">Home</button>
+      <button class="nav-button">About</button>
+      <button class="nav-button">Contact</button>
+    </div>
+  </div>
+  <div class="line"></div>
+  <div class="header">
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <h1 class="title">lets warmup guys</h1>
+  </div>
+  <div class="content">
+    <!-- Your quiz content goes here -->
+    <h2>Quiz Questions</h2>
+    <div class="question-group">
+      <div class="question">
+        <p>1-Which of the following types of sources of energy do not produce carbon di-oxide?</p>
+        <ul>
+          <li><input type="radio" name="q1" value="a"> Hydroelectric energy</li>
+          <li><input type="radio" name="q1" value="b">Wind energy</li>
+          <li><input type="radio" name="q1" value="c">all of this above</li>
+        </ul>
+      </div>
+      <div class="question">
+        <p>2-Which of the following is not a greenhouse gas?</p>
+        <ul>
+          <li><input type="radio" name="q2" value="a">Carbon monoxide</li>
+          <li><input type="radio" name="q2" value="b"> Methane</li>
+          <li><input type="radio" name="q2" value="c">Carbon di-oxide</li>
+        </ul>
+      </div>
+      <div class="question">
+        <p>3-Global warming also refers to as</p>
+        <ul>
+          <li><input type="radio" name="q3" value="a"> Ecological change</li>
+          <li><input type="radio" name="q3" value="b">Climate change</li>
+          <li><input type="radio" name="q3" value="c">Atmosphere change</li>
+        </ul>
+      </div>
+    </div>
+    <div class="question-group">
+      <!-- Repeat the above structure for the next set of three questions -->
+    </div>
+    <!-- Continue adding more question groups as needed -->
+  </div>
+  <div class="button-container">
+    <button class="submit-button">Submit</button>
+  </div>
+    <div class="buttons-left">
+        <button class="corner-button">Assignment</button>
+        <button class="corner-button">Progress</button>
+        <a href="search.html"><button class="corner-button">Back</button></a>
+      </div>
+  <script src="script.js"></script>
+</body>
+<script> document.getElementById("toggleButton").addEventListener("click", function() {
+    document.body.classList.toggle("menu-open");
+  });</script>
+</html>
+

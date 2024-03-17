@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <style><style>
+    .video-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 100px); 
+      background-color: #f0f0f0; 
+    }
+    .video-player {
+      width: 70%;
+      height: 100%;
+      margin-right: 30px;
+    }
+  </style></style>
+  <title>TechEase</title>
+  <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
+</head>
+<body>
+  <button class="toggle-button" id="toggleButton">&#8942;</button>
+  <div class="sidebar" id="sidebar">
+    <div class="nav-content">
+        <a href="loki.html"><button class="nav-button">Home</button></a>
+        <button class="nav-button">About</button>
+        <button class="nav-button">Contact</button>
+      </div>
+  </div>
+  
+  <div class="line"></div>
+  <div class="header">
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <h1 class="title">LEARNING PATH IS HERE</h1>
+  </div>
+
+  <div class="video-container">
+    <div class="video-player">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/Vztjbm6HA58?autoplay=1"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+        ></iframe>
+  
+        <div class="button-container">
+          <button class="voice-button">&#128266;</button>
+          <button class="mute-button">Mute</button>
+          <button class="doubt-button">Raise Doubt</button>
+          <button class="speak-response-button">Speak Response</button>
+  
+        </div>
+      </div>
+  </div>
+<!--
+  <div class="text-to-speech-container">
+    <input type="text" id="textToSpeak" placeholder="Enter text to speak">
+    <button id="speakButton" class="speak-button">&#128266;</button>
+  </div>
+-->
+  <div class="buttons-left">
+    <a href="quiz.html"><button class="corner-button">Quiz</button></a>
+    <button class="corner-button">Assignment</button>
+    <button class="corner-button">Progress</button>
+  </div>
+
+  <script>
+  document.getElementById("toggleButton").addEventListener("click", function() {
+  document.body.classList.toggle("menu-open");
+});
+  </script>
+
+<!-- speech recongnition and api -->
+  <div class="voice-text-box"></div>
+  <div>
+    <h3>API Response:</h3>
+    <div class="api-response-box"></div>
+</div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const voiceButton = document.querySelector(".voice-button");
+    const voiceTextBox = document.querySelector(".voice-text-box");
+
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+
+    voiceButton.addEventListener("click", function () {
+        recognition.start();
+    });
+
+    recognition.onresult = function (event) {
+        const recognizedText = event.results[0][0].transcript;
+        voiceTextBox.textContent = recognizedText;
+
+        // Section 2: Send Request and Get Response
+        sendChatRequest(recognizedText);
+    };
+
+    recognition.onerror = function (event) {
+        console.error("Speech recognition error:", event.error);
+    };
+});
+
+
+const apiUrl = "https://c24c-34-71-38-3.ngrok-free.app/";
+
+function sendChatRequest(inputText) {
+    const apiResponseBox = document.querySelector(".api-response-box");
+
+    fetch(apiUrl + "chat/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ input_text: inputText })
+    })
+    .then(response => response.json())
+    .then(data => {
+        const apiResponseText = JSON.stringify(data, null, 2); // Replace with actual API response key
+        apiResponseBox.textContent = apiResponseText;
+
+        // Section 3: Text to Speech
+        speakResponse(apiResponseText);
+    })
+    .catch(error => {
+        console.error("Error sending request:", error);
+    });
+}
+
+
+function speakResponse(responseText) {
+    // Use the Web Speech API to speak the response
+    if ('speechSynthesis' in window) {
+    const synthesis = window.speechSynthesis;
+    
+    // Create a SpeechSynthesisUtterance instance
+    const utterance = new SpeechSynthesisUtterance(responseText);
+    
+    // Speak the text
+    synthesis.speak(utterance);
+  } else {
+    console.log("Speech synthesis is not supported by your browser.");
+  }
+}
+
+  </script>
+
+<div id="centered-status"></div>
+  
+  <script>
+    // Define the center square dimensions and position
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    // Initialize WebGazer when the document is loaded
+    document.addEventListener("DOMContentLoaded", function () {
+      webgazer.setRegression("ridge")
+        .setGazeListener(function (data, elapsedTime) {
+          if (data === null) {
+            // Gaze data is not available, show alert
+            alert("WebGazer cannot track your gaze. Make sure your camera is enabled.");
+          } else {
+            // Check if the user's gaze covers the entire screen
+            const gazeX = data.x;
+            const gazeY = data.y;
+
+            const isGazeCoversScreen =
+              gazeX >= 0 && gazeX <= screenWidth &&
+              gazeY >= 0 && gazeY <= screenHeight;
+
+            // Display result on the screen
+            const resultElement = document.getElementById("centered-status");
+            resultElement.textContent = "Covers Screen: " + (isGazeCoversScreen ? "true" : "false");
+          }
+        })
+        .begin();
+    });
+  </script>
+
+<script src="script.js"></script>
+</body>
+</html>

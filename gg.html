@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice to API and Display Text</title>
+</head>
+<body>
+    <button class="voice-button">Start Voice</button>
+    <div class="voice-text-box" style="background-color: white;"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const voiceButton = document.querySelector(".voice-button");
+            const voiceTextBox = document.querySelector(".voice-text-box");
+            const apiUrl = "https://8a0b-35-199-155-12.ngrok-free.app/chat/";
+
+            const recognition = new webkitSpeechRecognition();
+            recognition.continuous = false; // Capture a single phrase at a time
+
+            recognition.onresult = function (event) {
+                const recognizedText = event.results[0][0].transcript;
+                voiceTextBox.textContent = recognizedText;
+
+                // Send recognized text to the API and display the response
+                fetch(apiUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ input_text: recognizedText })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const apiResponseText = data.output_data; // Replace with actual API response key
+                    voiceTextBox.textContent = apiResponseText;
+                })
+                .catch(error => {
+                    console.error("Error sending request:", error);
+                });
+            };
+
+            recognition.onerror = function (event) {
+                console.error("Speech recognition error:", event.error);
+            };
+
+            voiceButton.addEventListener("click", function () {
+                recognition.start();
+            });
+        });
+    </script>
+</body>
+</html>
